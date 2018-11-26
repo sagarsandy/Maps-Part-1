@@ -92,9 +92,13 @@ extension ViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
         // This condition will show the user location annotation, if this is not called, then user location annotation will not be displayed.
-        if annotation is MKUserLocation {
-            return nil
+        if annotation.isEqual(mapView.userLocation) {
+            // Customising user location annoation(pin)
+            let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "userLocation")
+            annotationView.image = UIImage(named: "chevron-flat.png")
+            return annotationView
         }
+        
 
         // This code is basically to render a mapview with annotations, just like rendering tableview cells in a table view
 
