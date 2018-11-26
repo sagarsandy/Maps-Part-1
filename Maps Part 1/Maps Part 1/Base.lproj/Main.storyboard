@@ -34,12 +34,28 @@
                                 </segments>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QtN-Qx-Mpq">
+                                <rect key="frame" x="117.5" y="607" width="140" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="S3U-Zv-qcK"/>
+                                    <constraint firstAttribute="width" constant="140" id="Tvb-MX-7o4"/>
+                                </constraints>
+                                <state key="normal" title="Add Anotation">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addAnnotationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AYg-CJ-oeh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rPy-sq-pcH" secondAttribute="trailing" constant="30" id="1ZD-dG-i8U"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C0m-sg-8Xb" secondAttribute="trailing" id="84e-6B-DB4"/>
                             <constraint firstItem="C0m-sg-8Xb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bdf-Wk-dyc"/>
+                            <constraint firstItem="QtN-Qx-Mpq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F3n-xX-Xuc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QtN-Qx-Mpq" secondAttribute="bottom" constant="30" id="Soh-v3-cop"/>
                             <constraint firstItem="rPy-sq-pcH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Udq-8t-0y7"/>
                             <constraint firstItem="C0m-sg-8Xb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Vau-tB-FPN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C0m-sg-8Xb" secondAttribute="bottom" id="Y1E-W1-OX2"/>

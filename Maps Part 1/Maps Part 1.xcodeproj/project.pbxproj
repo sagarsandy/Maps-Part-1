@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		573AB92821AB9C74005657E7 /* chevron-flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 573AB92721AB9C74005657E7 /* chevron-flat.png */; };
+		5776B66E21A7A1B6003C0AB2 /* CoffeeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776B66D21A7A1B6003C0AB2 /* CoffeeAnnotation.swift */; };
+		5776B67021A7A391003C0AB2 /* coffee-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776B66F21A7A391003C0AB2 /* coffee-pin.png */; };
 		57A7010521A64C50004766E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A7010421A64C50004766E6 /* AppDelegate.swift */; };
 		57A7010721A64C50004766E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A7010621A64C50004766E6 /* ViewController.swift */; };
 		57A7010A21A64C50004766E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57A7010821A64C50004766E6 /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		573AB92721AB9C74005657E7 /* chevron-flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-flat.png"; sourceTree = "<group>"; };
+		5776B66D21A7A1B6003C0AB2 /* CoffeeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAnnotation.swift; sourceTree = "<group>"; };
+		5776B66F21A7A391003C0AB2 /* coffee-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coffee-pin.png"; sourceTree = "<group>"; };
 		57A7010121A64C50004766E6 /* Maps Part 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Maps Part 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A7010421A64C50004766E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57A7010621A64C50004766E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,8 +60,11 @@
 		57A7010321A64C50004766E6 /* Maps Part 1 */ = {
 			isa = PBXGroup;
 			children = (
+				573AB92721AB9C74005657E7 /* chevron-flat.png */,
+				5776B66F21A7A391003C0AB2 /* coffee-pin.png */,
 				57A7010421A64C50004766E6 /* AppDelegate.swift */,
 				57A7010621A64C50004766E6 /* ViewController.swift */,
+				5776B66D21A7A1B6003C0AB2 /* CoffeeAnnotation.swift */,
 				57A7010821A64C50004766E6 /* Main.storyboard */,
 				57A7010B21A64C52004766E6 /* Assets.xcassets */,
 				57A7010D21A64C52004766E6 /* LaunchScreen.storyboard */,
@@ -123,8 +132,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A7010F21A64C52004766E6 /* LaunchScreen.storyboard in Resources */,
+				5776B67021A7A391003C0AB2 /* coffee-pin.png in Resources */,
 				57A7010C21A64C52004766E6 /* Assets.xcassets in Resources */,
 				57A7010A21A64C50004766E6 /* Main.storyboard in Resources */,
+				573AB92821AB9C74005657E7 /* chevron-flat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +148,7 @@
 			files = (
 				57A7010721A64C50004766E6 /* ViewController.swift in Sources */,
 				57A7010521A64C50004766E6 /* AppDelegate.swift in Sources */,
+				5776B66E21A7A1B6003C0AB2 /* CoffeeAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
