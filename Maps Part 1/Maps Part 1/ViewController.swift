@@ -42,6 +42,7 @@ class ViewController: UIViewController {
     }
 
     
+    // MARK: Segement controller action for value changed
     // Segement controller tapped(value changed) action
     @objc func mapTypeChanged(segementedControl : UISegmentedControl) {
         
@@ -57,7 +58,8 @@ class ViewController: UIViewController {
         }
     }
 
-    
+
+    // MARK: Adding annotation to the mapview
     // Add annotation button pressed action
     @IBAction func addAnnotationButtonPressed(_ sender: Any) {
         
@@ -73,16 +75,18 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: Map view delegate methods extension
+
 extension ViewController : MKMapViewDelegate {
     
     // This method will be called upon updating user location
-//    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-//
-//        // Zooming into current user location
-//        let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0050, longitudeDelta: 0.0050))
-//        mapView.setRegion(region, animated: true)
-//
-//    }
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+
+        // Zooming into current user location
+        let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        mapView.setRegion(region, animated: true)
+
+    }
     
     // This method will be used for rendering annotations with custom properties, in this case, we are adding image to the annotation. IN THIS METHOD WE ARE DEALING WITH THE BASIC ANNOTATION(PIN)
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -101,13 +105,15 @@ extension ViewController : MKMapViewDelegate {
         if coffeeAnnotationView == nil {
 
             coffeeAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CoffeeAnnotationView")
-            coffeeAnnotationView?.canShowCallout = true
+            
+            // This will show basic default callout view(Annotation or pin selected view)
+//            coffeeAnnotationView?.canShowCallout = true   // Commented because we are rendering custom callout view in didselect delegate method
 
             // Changing anootation view(pin popup view) styles
 //            configureView(annotationView: coffeeAnnotationView!)
             
             // Displaying picture automatically taken by iPhone at the time of clicking annotation pin(Super cool feature)
-            configureSnapShotView(annotationView: coffeeAnnotationView!)
+//            configureSnapShotView(annotationView: coffeeAnnotationView!)
         } else {
 
             coffeeAnnotationView?.annotation = annotation
@@ -122,6 +128,56 @@ extension ViewController : MKMapViewDelegate {
         // returing the annotation view
         return coffeeAnnotationView
 
+    }
+    
+    
+    // Rendering complete custom callout view(Annotation/pin view), this is delegate method and will be called automatically once you click on annotation(pin)
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        // Checking annotation type is custom created coffee annotation or not
+        guard let annotation = view.annotation as? CoffeeAnnotation else { return }
+        
+        // Create custom callout view
+        let coffeeCalloutView = UIView(frame: CGRect(x: view.frame.origin.x, y: view.frame.origin.y+50, width: 200, height: 70))
+        coffeeCalloutView.translatesAutoresizingMaskIntoConstraints = false
+        coffeeCalloutView.layer.cornerRadius = 10.0
+        coffeeCalloutView.layer.masksToBounds = true
+        coffeeCalloutView.backgroundColor = UIColor.blue
+        view.addSubview(coffeeCalloutView)
+        
+        // Setting up auto layout for the callout view based on annotaiton location
+        coffeeCalloutView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        coffeeCalloutView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        coffeeCalloutView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -5).isActive = true
+        coffeeCalloutView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        
+        // Adding lable to the callout(Annotation) view
+        let titleLable = UILabel(frame: CGRect(x: 10, y: 10, width: 70, height: 30))
+        titleLable.text = annotation.title
+        titleLable.textColor = UIColor.white
+        coffeeCalloutView.addSubview(titleLable)
+        
+        // Setting up autolayout to the title label
+        titleLable.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        titleLable.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        titleLable.bottomAnchor.constraint(equalTo: coffeeCalloutView.topAnchor, constant: -5).isActive = true
+        titleLable.centerXAnchor.constraint(equalTo: coffeeCalloutView.centerXAnchor).isActive = true
+        
+        
+    }
+    
+    
+    // This delegate method will be fired once user clicks anywhere in the map, other than annotation(pin)
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+        // Deleting custom callout view(Annotation/pin) view
+        view.subviews.forEach { (subview) in
+            
+            subview.removeFromSuperview()
+        }
+        
     }
     
     
@@ -192,7 +248,7 @@ extension ViewController : MKMapViewDelegate {
         
     }
     
-    // Adding image to the annotation view(pin view), the image is taken by iphone itself using MKMapSnapShotter
+    // Adding a location image to the annotation view(pin view), the image is taken by iphone itself using MKMapSnapShotter
     func configureSnapShotView(annotationView : MKAnnotationView) {
         
         let snapshotSize = CGSize(width: 200, height: 200)
@@ -222,7 +278,13 @@ extension ViewController : MKMapViewDelegate {
         annotationView.detailCalloutAccessoryView = snapshotView
         
     }
+    
 }
+
+
+
+// MARK: Location manager delegate methods extension
+
 
 extension ViewController : CLLocationManagerDelegate {
     
